@@ -364,28 +364,33 @@
                 animation.onfinish = () => conf.remove();
             }
         }
-        // 6. Background music on first interaction (browser-safe)
-            const bgMusic = document.getElementById("bg-music");
-            bgMusic.volume = 0.5;
+           // 6. Background music – safe autoplay on first interaction
+            document.addEventListener("DOMContentLoaded", () => {
+                const bgMusic = document.getElementById("bg-music");
+                if (!bgMusic) return;
             
-            function startMusicOnce() {
-                bgMusic.play().catch(() => {});
-                document.removeEventListener("click", startMusicOnce);
-                document.removeEventListener("mousemove", startMusicOnce);
-                document.removeEventListener("touchstart", startMusicOnce);
-                document.removeEventListener("keydown", startMusicOnce);
-            }
+                bgMusic.volume = 0.5;
             
-            document.addEventListener("click", startMusicOnce);
-            document.addEventListener("mousemove", startMusicOnce);
-            document.addEventListener("touchstart", startMusicOnce);
-            document.addEventListener("keydown", startMusicOnce);
+                const startMusicOnce = () => {
+                    bgMusic.play().catch(() => {});
+                    document.removeEventListener("click", startMusicOnce);
+                    document.removeEventListener("mousemove", startMusicOnce);
+                    document.removeEventListener("touchstart", startMusicOnce);
+                    document.removeEventListener("keydown", startMusicOnce);
+                };
+            
+                document.addEventListener("click", startMusicOnce);
+                document.addEventListener("mousemove", startMusicOnce);
+                document.addEventListener("touchstart", startMusicOnce);
+                document.addEventListener("keydown", startMusicOnce);
+            });
 
     </script>
 
 </body>
 
 </html>
+
 
 
 
