@@ -365,24 +365,27 @@
             }
         }
            // 6. Background music – safe autoplay on first interaction
+           // Replace your section 6 script with this:
             document.addEventListener("DOMContentLoaded", () => {
                 const bgMusic = document.getElementById("bg-music");
-                if (!bgMusic) return;
+                bgMusic.volume = 0.3; // Lower volume is usually better for background music
             
-                bgMusic.volume = 0.5;
-            
-                const startMusicOnce = () => {
-                    bgMusic.play().catch(() => {});
-                    document.removeEventListener("click", startMusicOnce);
-                    document.removeEventListener("mousemove", startMusicOnce);
-                    document.removeEventListener("touchstart", startMusicOnce);
-                    document.removeEventListener("keydown", startMusicOnce);
+                const startMusic = () => {
+                    bgMusic.play()
+                        .then(() => {
+                            console.log("Music playing!");
+                            // Remove listeners once music starts
+                            ["click", "touchstart", "keydown"].forEach(event => 
+                                document.removeEventListener(event, startMusic)
+                            );
+                        })
+                        .catch(error => console.log("Playback failed:", error));
                 };
             
-                document.addEventListener("click", startMusicOnce);
-                document.addEventListener("mousemove", startMusicOnce);
-                document.addEventListener("touchstart", startMusicOnce);
-                document.addEventListener("keydown", startMusicOnce);
+                // Add listeners for the first user interaction
+                ["click", "touchstart", "keydown"].forEach(event => 
+                    document.addEventListener(event, startMusic)
+                );
             });
 
     </script>
@@ -390,6 +393,7 @@
 </body>
 
 </html>
+
 
 
 
