@@ -241,22 +241,25 @@
             </div>
 
             <div class="polaroid-stack">
-                <div class="polaroid" id="p1" onclick="document.getElementById('file1').click()">
-                    <div class="photo-slot" id="slot1"><span>+</span></div>
-                    <div class="photo-label">US <3</div>
-                    <input type="file" id="file1" accept="image/*" onchange="handleImage(event, 'slot1')">
+                <div class="polaroid" id="p1">
+                    <div class="photo-slot">
+                        <img src="images/photo1.jpg" alt="US <3">
+                    </div>
+                    <div class="photo-label">US &lt;3</div>
                 </div>
-
-                <div class="polaroid" id="p2" onclick="document.getElementById('file2').click()">
-                    <div class="photo-slot" id="slot2"><span>+</span></div>
+            
+                <div class="polaroid" id="p2">
+                    <div class="photo-slot">
+                        <img src="images/photo2.jpg" alt="Memories">
+                    </div>
                     <div class="photo-label">MEMORIES</div>
-                    <input type="file" id="file2" accept="image/*" onchange="handleImage(event, 'slot2')">
                 </div>
-
-                <div class="polaroid" id="p3" onclick="document.getElementById('file3').click()">
-                    <div class="photo-slot" id="slot3"><span>+</span></div>
+            
+                <div class="polaroid" id="p3">
+                    <div class="photo-slot">
+                        <img src="images/photo3.jpg" alt="Forever">
+                    </div>
                     <div class="photo-label">FOREVER</div>
-                    <input type="file" id="file3" accept="image/*" onchange="handleImage(event, 'slot3')">
                 </div>
             </div>
         </div>
@@ -360,4 +363,5 @@
         }
     </script>
 </body>
+
 </html>
